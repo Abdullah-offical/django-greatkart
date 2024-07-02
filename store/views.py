@@ -18,3 +18,15 @@ def store(request, category_slug=None):
         'products_count' : products_count
     }
     return render(request, 'store/store.html', context)
+
+
+def product_details(request, category_slug, product_slug):
+    try:
+        single_product = Product.objects.get(category__slug=category_slug, slug=product_slug) # category is the forenkey of category table and slug is field inside category table
+    except Exception as e:
+        raise e
+        
+    context = {
+        'single_product' : single_product
+    }
+    return render(request, 'store/product_details.html', context)

@@ -33,7 +33,7 @@ def add_cart(request, product_id):
         )
         cart_item.save()
     
-    return redirect('cart')
+    return redirect('carts')
 
 def carts(request, total=0, quantity=0, cart_item=None):
     try:
@@ -52,4 +52,4 @@ def carts(request, total=0, quantity=0, cart_item=None):
         'cart_items': cart_items,
 
     }
-    return render(request, 'store/cart.html', context)
+    return render(request, 'store/carts.html', context)

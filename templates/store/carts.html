@@ -5,6 +5,17 @@
 <section class="section-content padding-y bg">
     <div class="container">
     
+        
+        {% if not cart_items %}
+            <div class="text-center">
+                <h2>Cart not Found</h2><br>
+                <a href="{% url 'store' %}" class="btn btn-primary">Continue Shoiping</a>
+            </div>
+
+        {% else %}
+
+        
+            
     <!-- ============================ COMPONENT 1 ================================= -->
     
     <div class="row">
@@ -95,7 +106,7 @@
     
     </div> <!-- row.// -->
     <!-- ============================ COMPONENT 1 END .// ================================= -->
-    
+    {% endif %}
     </div> <!-- container .//  -->
     </section>
     

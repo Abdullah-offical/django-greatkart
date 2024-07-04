@@ -13,10 +13,13 @@ def store(request, category_slug=None):
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=categories, is_available=True)
+        paginator = Paginator(products, 1) # get products
+        page = request.GET.get('page') # get the page number url/?page=2
+        paged_products = paginator.get_page(page)
         products_count = products.count()
     else:
         products = Product.objects.all().filter(is_available=True)
-        paginator = Paginator(products, 6) # get 6 products
+        paginator = Paginator(products, 3) # get 6 products
         page = request.GET.get('page') # get the page number url/?page=2
         paged_products = paginator.get_page(page)
 

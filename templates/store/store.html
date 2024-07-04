@@ -5,7 +5,15 @@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
     <div class="container">
+        
+        {% if 'search' in request.path %}
+        <h2 class="title-page">Search Page</h2>
+
+        {% else %}
         <h2 class="title-page">Our Store</h2>
+            
+        {% endif %}
+            
         
     </div> <!-- container //  -->
     </section>
@@ -127,6 +135,8 @@
             </div>
     </header><!-- sect-heading -->
     
+    
+    {% if products %}
     <div class="row">
         {% for product in products %}
         
@@ -153,6 +163,10 @@
         {% endfor %}
     
     </div> <!-- row end.// -->
+    {% else %}
+    <h6>No result found.</h6>
+    {% endif %}
+        
     
     
     <nav class="mt-4" aria-label="Page navigation sample">

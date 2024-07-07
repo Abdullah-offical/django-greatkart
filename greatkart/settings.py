@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-w1mqli(%g+u(-o_pd9g4-j2sa)i6dtc7)39s-_n1mco)%w3!v8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -138,3 +138,7 @@ MEDIA_ROOT = BASE_DIR /'media'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
+# Grok setuo
+CSRF_TRUSTED_ORIGINS = ['https://e7f6-119-155-194-183.ngrok-free.app']
+BASE_URL = 'https://e7f6-119-155-194-183.ngrok-free.app'

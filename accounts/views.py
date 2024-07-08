@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
-from .forms import RegisterationForm
+from .forms import RegistrationForm
 from .models import Account
-from django.contrib import messages
-
+from django.contrib import messages, auth
+from django.contrib.auth.decorators import login_required
 
 def register(request):
     if request.method == 'POST':
-        form = RegisterationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
@@ -27,14 +27,34 @@ def register(request):
             messages.success(request, 'Registration Successfuly.')
             return redirect('register')
     else:
-        form = RegisterationForm()
+        form = RegistrationForm()
     context = {
         'form' : form
     }
     return render(request, 'accounts/register.html', context)
 
+
+
 def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+
+        # Authenticate user
+        user = auth.authenticate(email=email, password=password)
+        
+        
+        if user is not None:
+            auth.login(request, user)  # Log in the user
+            return redirect('home')  # Redirect to home page after successful login
+        else:
+            messages.error(request, 'Invalid login credentials.')  # Display error message
+            return redirect('login')  # Redirect back to login page on failure
+    
     return render(request, 'accounts/login.html')
 
+@login_required(login_url = 'login')
 def logout(request):
-    return
+    auth.logout(request)
+    messages.success(request, 'You are logged out!')
+    return redirect('login')

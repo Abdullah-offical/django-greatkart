@@ -1,3 +1,4 @@
+from typing import Any
 from django import forms
 from .models import Account
 
@@ -32,3 +33,13 @@ class RegisterationForm(forms.ModelForm):
         #  add class name all fileds for css
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
+
+    def clean(self):
+        clean_data = super(RegisterationForm, self).clean()
+        password = clean_data.get('password')
+        confirm_password = clean_data.get('confirm_password')
+
+        if password != confirm_password:
+            raise forms.ValidationError(
+                'Password does not match!'
+            )

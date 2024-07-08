@@ -138,6 +138,12 @@ MEDIA_ROOT = BASE_DIR /'media'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}
+
 
 # Grok setuo
 CSRF_TRUSTED_ORIGINS = ['https://e7f6-119-155-194-183.ngrok-free.app']

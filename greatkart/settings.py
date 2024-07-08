@@ -145,6 +145,17 @@ MESSAGE_TAGS = {
 }
 
 
+
+# SMTP configuration
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'aj161474@gmail.com'
+EMAIL_HOST_PASSWORD = 'hbaquykuivnxemhj' # 16 digit app  password by 2 step verifacation
+EMAIL_USE_TLS = True
+
+
+
+
 # Grok setuo
-CSRF_TRUSTED_ORIGINS = ['https://e7f6-119-155-194-183.ngrok-free.app']
-BASE_URL = 'https://e7f6-119-155-194-183.ngrok-free.app'
+CSRF_TRUSTED_ORIGINS = ['https://d127-119-155-212-232.ngrok-free.app']
+BASE_URL = 'https://d127-119-155-212-232.ngrok-free.app'

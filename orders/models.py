@@ -44,6 +44,7 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
+    # add firstname and lastname  use to chakout view
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
 
